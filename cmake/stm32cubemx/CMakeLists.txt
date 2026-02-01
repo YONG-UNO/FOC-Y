@@ -67,7 +67,7 @@ set(MX_LINK_DIRS
 )
 # Project static libraries
 set(MX_LINK_LIBS  
-	:libarm_cortexM3l_math.a
+	arm_cortexM3l_math
     STM32_Drivers
     
 )
