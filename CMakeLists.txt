@@ -36,7 +36,8 @@ enable_language(C ASM)
 
 # Create an executable object type
 add_executable(${CMAKE_PROJECT_NAME}
-        UserLib/Module/Device/MT6701.h)
+        UserLib/Module/Device/MT6701.h
+        UserLib/Module/Device/MT6701.c)
 
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)

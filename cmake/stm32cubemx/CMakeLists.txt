@@ -15,13 +15,18 @@ set(MX_Include_Dirs
     ${CMAKE_SOURCE_DIR}/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy
     ${CMAKE_SOURCE_DIR}/Drivers/CMSIS/Device/ST/STM32F1xx/Include
     ${CMAKE_SOURCE_DIR}/Drivers/CMSIS/Include
+    ${CMAKE_SOURCE_DIR}/Middlewares/ST/ARM/DSP/Inc
 )
 
 # STM32CubeMX generated application sources
 set(MX_Application_Src
     ${CMAKE_SOURCE_DIR}/Core/Src/main.c
     ${CMAKE_SOURCE_DIR}/Core/Src/gpio.c
+    ${CMAKE_SOURCE_DIR}/Core/Src/adc.c
+    ${CMAKE_SOURCE_DIR}/Core/Src/dma.c
     ${CMAKE_SOURCE_DIR}/Core/Src/spi.c
+    ${CMAKE_SOURCE_DIR}/Core/Src/tim.c
+    ${CMAKE_SOURCE_DIR}/Core/Src/usart.c
     ${CMAKE_SOURCE_DIR}/Core/Src/stm32f1xx_it.c
     ${CMAKE_SOURCE_DIR}/Core/Src/stm32f1xx_hal_msp.c
     ${CMAKE_SOURCE_DIR}/Core/Src/sysmem.c
@@ -33,7 +38,8 @@ set(MX_Application_Src
 set(STM32_Drivers_Src
     ${CMAKE_SOURCE_DIR}/Core/Src/system_stm32f1xx.c
     ${CMAKE_SOURCE_DIR}/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c
-    ${CMAKE_SOURCE_DIR}/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c
+    ${CMAKE_SOURCE_DIR}/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c
+    ${CMAKE_SOURCE_DIR}/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c
     ${CMAKE_SOURCE_DIR}/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c
     ${CMAKE_SOURCE_DIR}/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c
     ${CMAKE_SOURCE_DIR}/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c
@@ -44,18 +50,24 @@ set(STM32_Drivers_Src
     ${CMAKE_SOURCE_DIR}/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c
     ${CMAKE_SOURCE_DIR}/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c
     ${CMAKE_SOURCE_DIR}/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c
+    ${CMAKE_SOURCE_DIR}/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c
+    ${CMAKE_SOURCE_DIR}/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c
+    ${CMAKE_SOURCE_DIR}/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c
+    ${CMAKE_SOURCE_DIR}/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c
 )
 
-# Drivers Midllewares
+# Drivers Middlewares
 
 
 
 # Link directories setup
 set(MX_LINK_DIRS
 
+    ${CMAKE_SOURCE_DIR}/Middlewares/ST/ARM/DSP/Lib
 )
 # Project static libraries
-set(MX_LINK_LIBS 
+set(MX_LINK_LIBS  
+	:libarm_cortexM3l_math.a
     STM32_Drivers
     
 )
