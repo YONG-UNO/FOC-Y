@@ -56,7 +56,7 @@ set(STM32_Drivers_Src
     ${CMAKE_SOURCE_DIR}/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c
 )
 
-# Drivers Middlewares
+# Drivers Midllewares
 
 
 
@@ -67,7 +67,7 @@ set(MX_LINK_DIRS
 )
 # Project static libraries
 set(MX_LINK_LIBS  
-	arm_cortexM3l_math
+	:libarm_cortexM3l_math.a
     STM32_Drivers
     
 )

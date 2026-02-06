@@ -36,35 +36,49 @@ enable_language(C ASM)
 
 # Create an executable object type
 add_executable(${CMAKE_PROJECT_NAME}
-        UserLib/Module/Device/MT6701.h
-        UserLib/Module/Device/MT6701.c)
+        UserLib/Module/MT6701/MT6701.c
+        UserLib/Config/motor_config.c
+        UserLib/Module/PWM/pwm.c
+        UserLib/Module/INA199/INA199.c
+        UserLib/Algorithms/Filer/filter.c
+        UserLib/Algorithms/SVPWM/svpwm.c
+#        UserLib/Algorithms/PID/pid.c
+)
 
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)
 
 # Link directories setup
 target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
-    # Add user defined library search paths
+        # Add user defined library search paths
 )
 
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    # Add user sources here
+        # Add user sources here
 )
 
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
-    # Add user defined include paths
+        # Add user defined include paths
+        ${CMAKE_SOURCE_DIR}/UserLib/Module/MT6701
+        ${CMAKE_SOURCE_DIR}/UserLib/Config
+        ${CMAKE_SOURCE_DIR}/UserLib/BSP/PWM
+        ${CMAKE_SOURCE_DIR}/UserLib/Algorithms/Filer
+        ${CMAKE_SOURCE_DIR}/UserLib/Algorithms/SVPWM
+#        ${CMAKE_SOURCE_DIR}/UserLib/Algorithms/PID
+        ${CMAKE_SOURCE_DIR}/UserLib/Module/INA199
+
 )
 
 # Add project symbols (macros)
 target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
-    # Add user defined symbols
+        # Add user defined symbols
 )
 
 # Add linked libraries
 target_link_libraries(${CMAKE_PROJECT_NAME}
-    stm32cubemx
+        stm32cubemx
 
-    # Add user defined libraries
+        # Add user defined libraries
 )

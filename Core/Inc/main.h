@@ -31,7 +31,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "motor_config.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -57,8 +57,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define pwm_freq motor_pwm_freq
-#define speed_calc_freq motor_speed_calc_freq
+#define PWM_FREQ MOTOR_PWM_FREQ
+#define SPEED_CALC_FREQ MOTOR_SPEED_CALC_FREQ
 #define MT6701_CSN_Pin GPIO_PIN_4
 #define MT6701_CSN_GPIO_Port GPIOA
 #define TIM1_Break_Pin GPIO_PIN_12
